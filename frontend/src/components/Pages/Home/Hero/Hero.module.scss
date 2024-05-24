@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.hero {
+
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    background-image: url("https://preview.colorlib.com/theme/wines/images/hero_2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1200px;
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 1200px;
+      color: white;
+
+      h3{
+        font-size: 40px;
+      }
+
+      h1{
+        font-size: 60px;
+      }
+    }
+  }
+}
