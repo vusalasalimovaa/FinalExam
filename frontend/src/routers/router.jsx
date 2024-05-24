@@ -8,6 +8,7 @@ import Detail from "../components/Pages/Detail";
 import Admin from "../components/Pages/AdminPanel";
 import CreateProduct from "../components/Pages/AdminPanel/CreateProduct";
 import EditProduct from "../components/Pages/AdminPanel/EditProduct";
+import Basket from "../components/Pages/Basket";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/fav",
         element: <Fav />,
+      },
+      {
+        path: "/basket",
+        element: <Basket />,
       },
       {
         path: "/detail/:id",

@@ -3,9 +3,12 @@ import { SlBasket } from "react-icons/sl";
 import { FaRegHeart } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import style from "./Navbar.module.scss"
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-  // const { fav } = useSelector((store) => store.fav)
+  const { fav } = useSelector((store) => store.fav)
+  const { basket } = useSelector((store) => store.basket)
+  let basketCount = basket?.reduce((acc,elem) => acc += elem.count,0)
 
   return (
     <>
@@ -34,14 +37,16 @@ const Navbar = () => {
                   <Link>Contact</Link>
                 </li>
                 <li>
-                  <Link>
+                  <Link to="/basket">
                     <SlBasket />
+                    <span>{basketCount}</span>
+
                   </Link>
                 </li>
                 <li>
                   <Link to="/fav">
                     <FaRegHeart />
-                    {/* <span>{fav.length}</span> */}
+                    <span>{fav.length}</span>
                   </Link>
                 </li>
               </ul>

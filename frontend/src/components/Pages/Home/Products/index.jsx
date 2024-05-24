@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToFav, deleteFav } from '../../../../redux/FavSlice';
 import { FaHeart } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import { addToBasket } from '../../../../redux/BasketSlice';
 
 
 const Product = () => {
@@ -36,6 +37,12 @@ const Product = () => {
                       <button className={style.detail}>Detail</button>
 
                     </Link>
+
+
+                    <button onClick={() => dispatch(addToBasket(elem))} className={style.detail}>Add to Basket</button>
+
+
+
 
                     <div className={style.heart}>
 
