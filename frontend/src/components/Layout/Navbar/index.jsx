@@ -6,6 +6,7 @@ import style from "./Navbar.module.scss"
 
 const Navbar = () => {
   // const { fav } = useSelector((store) => store.fav)
+
   return (
     <>
       <div className={style.navbar}>

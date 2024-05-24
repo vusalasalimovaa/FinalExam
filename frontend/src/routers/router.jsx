@@ -7,6 +7,7 @@ import Fav from "../components/Pages/Fav";
 import Detail from "../components/Pages/Detail";
 import Admin from "../components/Pages/AdminPanel";
 import CreateProduct from "../components/Pages/AdminPanel/CreateProduct";
+import EditProduct from "../components/Pages/AdminPanel/EditProduct";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/post",
         element: <CreateProduct />,
+      },
+      {
+        path: "/edit/:id",
+        element: <EditProduct />,
       },
 
     ]

@@ -1,24 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDeleteProductByIdMutation, useGetAllProductQuery } from '../../../services/product'
 
 const Admin = () => {
   const { data: admin, refetch } = useGetAllProductQuery()
+  console.log(admin)
   const [deleteProductById] = useDeleteProductByIdMutation()
-  const [sortType, setSortType] = useState([])
+  const [wine, setWine] = useState([])
+  useEffect(() => {
+    admin && setWine([...admin])
+
+  }, [admin])
+
+  const [sortType, setSortType] = useState()
   const [title, setTitle] = useState()
 
-  // const filteredProduct = admin?.filter((item) => item.title.toUpperCase().includes(title.toUpperCase()))
 
-  if (sortType === "a-z") {
-    admin?.sort((a, b) => a.title.localeCompare(b.title))
-  } else if (sortType === "z-a") {
-    admin?.sort((a, b) => b.title.localeCompare(b.title))
-  } else if (sortType === "low-high") {
-    admin?.sort((a, b) => a.price - b.price)
-  } else if (sortType === "high-low") {
-    admin?.sort((a, b) => b.price - a.price)
-  }
+
+  // const filteredProduct = wine && wine.filter((item) => item.title.toUpperCase().includes(title.toUpperCase()))
+
+  useEffect(() => {
+    if (sortType === "a-z") {
+
+      setWine([...wine?.sort((a, b) => a.title.localeCompare(b.title))])
+
+    } else if (sortType === "z-a") {
+      setWine([...wine?.sort((a, b) => b.title.localeCompare(a.title))])
+    } else if (sortType === "low-high") {
+      setWine([...wine?.sort((a, b) => a.price - b.price)])
+    } else if (sortType === "high-low") {
+      setWine([...wine?.sort((a, b) => b.price - a.price)])
+    }
+  }, [sortType])
+
+
+
 
 
   return (
@@ -40,7 +56,7 @@ const Admin = () => {
               <div className="flex justify-center items-baseline flex-wrap">
                 <div className="flex m-2">
                   <button
-                  onClick={() => setSortType("a-z")}
+                    onClick={() => setSortType("a-z")}
                     className="text-base  rounded-r-none  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
   hover:bg-gray-200  
   bg-gray-100 
@@ -67,7 +83,7 @@ const Admin = () => {
                     </div>
                   </button>
                   <button
-                  onClick={() => setSortType("z-a")}
+                    onClick={() => setSortType("z-a")}
 
                     className="text-base  rounded-l-none border-l-0  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
   hover:bg-teal-200  
@@ -97,7 +113,7 @@ const Admin = () => {
                 </div>
                 <div className="flex m-2">
                   <button
-                  onClick={() => setSortType("low-high")}
+                    onClick={() => setSortType("low-high")}
 
                     className="text-base  rounded-r-none  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
   hover:bg-teal-700 hover:text-teal-100 
@@ -125,7 +141,7 @@ const Admin = () => {
                     </div>
                   </button>
                   <button
-                  onClick={() => setSortType("high-low")}
+                    onClick={() => setSortType("high-low")}
 
                     className="text-base  rounded-l-none rounded-r-none border-l-0 border-r-0  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
   hover:bg-teal-700 hover:text-teal-100 
@@ -234,7 +250,7 @@ const Admin = () => {
                 </tr>
 
 
-                {admin?.map((elem) => {
+                {wine?.map((elem) => {
                   return (
                     <tr className="border-b hover:bg-orange-100 bg-gray-100">
                       <td className="p-3 px-5">{elem.title}</td>
@@ -254,13 +270,15 @@ const Admin = () => {
                       </td>
                       <td className="p-3 px-5">
 
+                        <Link to={`/edit/${elem._id}`}>
+                          <button
+                            type="button"
+                            className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                          >
+                            Edit
+                          </button>
+                        </Link>
 
-                        <button
-                          type="button"
-                          className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                        >
-                          Edit
-                        </button>
                       </td>
                     </tr>
                   )
