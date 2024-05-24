@@ -5,6 +5,7 @@ import { FaRegHeart } from "react-icons/fa6";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFav, deleteFav } from '../../../../redux/FavSlice';
 import { FaHeart } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 
 const Product = () => {
@@ -31,11 +32,14 @@ const Product = () => {
                     <img src={elem.image} alt="" />
                     <h3>{elem.title}</h3>
                     <p>${elem.price}</p>
-                    <button className={style.detail}>Detail</button>
+                    <Link to={`/detail/${elem._id}`}>
+                      <button className={style.detail}>Detail</button>
+
+                    </Link>
 
                     <div className={style.heart}>
 
-                      {fav?.find((el) => el._id == elem._id) ? (<FaHeart onClick={() => dispatch(deleteFav(elem))} style={{color:"red"}} />
+                      {fav?.find((el) => el._id == elem._id) ? (<FaHeart onClick={() => dispatch(deleteFav(elem))} style={{ color: "red" }} />
                       ) : (<FaRegHeart onClick={() => dispatch(addToFav(elem))} />)}
 
                     </div>

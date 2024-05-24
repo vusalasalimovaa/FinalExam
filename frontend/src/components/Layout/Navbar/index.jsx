@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import style from "./Navbar.module.scss"
 
 const Navbar = () => {
+  // const { fav } = useSelector((store) => store.fav)
   return (
     <>
       <div className={style.navbar}>
@@ -39,6 +40,7 @@ const Navbar = () => {
                 <li>
                   <Link to="/fav">
                     <FaRegHeart />
+                    {/* <span>{fav.length}</span> */}
                   </Link>
                 </li>
               </ul>

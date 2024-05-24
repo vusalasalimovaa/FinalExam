@@ -1,0 +1,34 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.basic{
+  background-image: url("https://preview.colorlib.com/theme/wines/images/img_2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+
+  .container{
+    max-width: 1200px;
+    margin: auto;
+
+    .text{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 500px;
+      color: white;
+
+      h3{
+        font-size: 30px;
+      }
+
+      h1{
+        font-size: 70px;
+      }
+    }
+  }
+}
